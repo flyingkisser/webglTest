@@ -1,0 +1,11 @@
+{
+  "core": [
+    "define/define.js"
+  ],
+
+  "loader":[
+    "loader/loader.js"
+  ],
+
+  "game":["core","loader"]
+}

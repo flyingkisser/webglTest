@@ -3,7 +3,7 @@
  */
 
 
-var main=function () {
+var draw1=function () {
     var canvas=document.getElementById("gameCanvas");
     var gl=canvas.getContext("webgl");
     if(!gl){
@@ -11,13 +11,7 @@ var main=function () {
         return;
     }
 
-    var vertexShaderSource = document.getElementById("2d-vertex-shader").text;
-    var fragmentShaderSource = document.getElementById("2d-fragment-shader").text;
-
-    var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
-    var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
-
-    var program = createProgram(gl, vertexShader, fragmentShader);
+    var program=util.initProgram(gl, "2d-vertex-shader", "2d-fragment-shader");
 
     var positionAttributeLocation = gl.getAttribLocation(program, "a_position");
     var positionBuffer = gl.createBuffer();
@@ -33,10 +27,12 @@ var main=function () {
 
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     // Clear the canvas
-    gl.clearColor(0, 0, 0, 0);
+    gl.clearColor(1, 1, 0, 0.8);
     gl.clear(gl.COLOR_BUFFER_BIT);
     // Tell it to use our program (pair of shaders)
-    gl.useProgram(program);
+    //gl.useProgram(program);
+
+
     gl.enableVertexAttribArray(positionAttributeLocation);
 
     // Tell the attribute how to get data out of positionBuffer (ARRAY_BUFFER)
